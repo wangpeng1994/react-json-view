@@ -56,7 +56,8 @@ class ReactJsonView extends React.PureComponent {
         style: {},
         validationMessage: 'Validation Error',
         defaultValue: null,
-        displayArrayKey: true
+        displayArrayKey: true,
+        displayAbstract: false, // Display an abstract while the content is collapsed [{...}, 1, Array(14)], rather than ellipsis '[...]'
     };
 
     // will trigger whenever setState() is called, or parent passes in new props.

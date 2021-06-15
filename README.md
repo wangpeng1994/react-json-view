@@ -1,3 +1,13 @@
+# 仓库说明
+基于 react-json-view@1.21.3 定制，较之原版，增加的功能如下：
+
+### Props
+Name|Type|Default|Description
+|:---|:---|:---|:---
+`displayAbstract`|`boolean`|`false`|折叠状态下，展示数据摘要（如同 Chrome devtool Console 和 Network 抓包时那样）而非省略符号 '...'
+
+----------------------------以下为原版文档----------------------------------
+
 ![alt text](https://github.com/mac-s-g/react-json-view/blob/master/doc/rjv-icon-alt.png?raw=true)
 
 [![npm](https://img.shields.io/npm/v/react-json-view.svg)](https://www.npmjs.com/package/react-json-view) [![npm](https://img.shields.io/npm/l/react-json-view.svg)](https://github.com/mac-s-g/react-json-view/blob/master/LISCENSE) [![Build Status](https://travis-ci.org/mac-s-g/react-json-view.svg)](https://travis-ci.org/mac-s-g/react-json-view) [![Coverage Status](https://coveralls.io/repos/github/mac-s-g/react-json-view/badge.svg?branch=master)](https://coveralls.io/github/mac-s-g/react-json-view?branch=master)

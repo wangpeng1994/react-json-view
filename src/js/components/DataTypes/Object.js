@@ -110,20 +110,47 @@ class RjvObject extends React.PureComponent {
         );
     };
 
-    getEllipsis = () => {
-        const { size } = this.state;
+    // Display an abstract of the given content like Chrome devtools Console does.
+    displayAbstract = (src) => {
+        const isArray = value => Array.isArray(value);
+        const isObject = value => Object.prototype.toString.call(value) === '[object Object]';
+        const getValueAbstractString = (m) => {
+            if (isArray(m)) {
+                return `Array(${m.length})`
+            } else if (isObject(m)) {
+                return '{...}'
+            } else {
+                return typeof m === 'string' ? `\"${m}\"` : (m + '');
+            }
+        }
+        if (isArray(src)) {
+            return src.map(getValueAbstractString).join(', ');
+        } else if (isObject(src)) {
+            return Object.keys(src).sort().map(k => {
+                return `${k}: ${getValueAbstractString(src[k])}`;
+            }).join(', ');
+        } else {
+            return src;
+        }
+    };
 
+    getEllipsis = (src) => {
+        const { size } = this.state;
+        const { displayAbstract } = this.props;
         if (size === 0) {
             //don't render an ellipsis when an object has no items
             return null;
         } else {
             return (
                 <div
-                    {...Theme(this.props.theme, 'ellipsis')}
+                    {...Theme(this.props.theme, displayAbstract ? 'abstract' : 'ellipsis')}
                     class="node-ellipsis"
                     onClick={this.toggleCollapsed}
                 >
-                    ...
+                    {displayAbstract
+                        ? this.displayAbstract(src)
+                        : '...'
+                    }
                 </div>
             );
         }
@@ -221,7 +248,7 @@ class RjvObject extends React.PureComponent {
                           iconStyle,
                           ...rest
                       })
-                    : this.getEllipsis()}
+                    : this.getEllipsis(src)}
                 <span class="brace-row">
                     <span
                         style={{

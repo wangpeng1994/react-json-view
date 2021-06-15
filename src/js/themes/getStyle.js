@@ -67,6 +67,12 @@ const getDefaultThemeStyling = theme => {
             lineHeight: constants.ellipsisLineHeight,
             cursor: constants.ellipsisCursor
         },
+        abstract: {
+            display: 'inline-block',
+            color: colors.keyColor,
+            // color: colors.objectSize,
+            cursor: constants.ellipsisCursor,
+        },
         'brace-row': {
             display: 'inline-block',
             cursor: 'pointer'
